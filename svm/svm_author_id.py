@@ -25,7 +25,11 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 #########################################################
 clf = SVC(kernel='linear')
+t0 = time()
 clf.fit(features_train, labels_train)
+print "training time:", round(time()-t0, 3), "s"
+t1 = time()
 labels_pred = clf.predict(features_test)
+print "prediction time:", round(time()-t1, 3), "s"
 accuracy = accuracy_score(labels_pred, labels_test)
 print accuracy
